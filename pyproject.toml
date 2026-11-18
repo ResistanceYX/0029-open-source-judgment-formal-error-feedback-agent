@@ -1,0 +1,34 @@
+[build-system]
+requires = ["setuptools>=68"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "judgment-formal-lint"
+version = "0.1.0"
+description = "裁判文书形式异常线索检查工具：只输出待核线索，不做裁判结论（#0029 节点开源实现）"
+readme = "README.md"
+requires-python = ">=3.10"
+license = {text = "MIT"}
+authors = [{name = "ResistanceYX"}]
+keywords = ["legal-tech", "lint", "deterministic-rules", "chinese-legal-documents"]
+classifiers = [
+    "Development Status :: 4 - Beta",
+    "Intended Audience :: Legal Industry",
+    "Programming Language :: Python :: 3",
+    "License :: OSI Approved :: MIT License",
+    "Topic :: Text Processing :: Filters",
+]
+# 核心工具零第三方运行时依赖：python -m pip install -e . 在干净环境也不会失败
+dependencies = []
+
+[project.optional-dependencies]
+dev = ["pytest>=7"]
+
+[project.scripts]
+judgment-formal-lint = "judgment_formal_lint.cli:main"
+
+[tool.setuptools.packages.find]
+where = ["src"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
