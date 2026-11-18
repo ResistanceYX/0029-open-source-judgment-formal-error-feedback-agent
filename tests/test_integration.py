@@ -1,4 +1,5 @@
 import json
+import os
 import subprocess
 import sys
 from pathlib import Path
@@ -46,7 +47,6 @@ def test_clean_document_zero_leads(tmp_path):
 def test_cli_smoke(tmp_path):
     p = tmp_path / "doc.txt"
     p.write_text(DOC, encoding="utf-8")
-    import os
     env = dict(os.environ)
     env["PYTHONPATH"] = str(ROOT / "src")
     r = subprocess.run([sys.executable, "-m", "judgment_formal_lint.cli", "lint",
